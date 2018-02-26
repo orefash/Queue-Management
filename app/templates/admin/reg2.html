@@ -1,0 +1,41 @@
+     {% import "bootstrap/utils.html" as utils %}
+     {% extends "reg_base1.html" %}
+{% block title %}Register{% endblock %}
+{% block body %} 
+<div class="inner-bg">
+                <div class="container">                  
+ <div class="row">  
+
+							<div class="col-sm-7 text">
+         
+                        </div>
+                        <div class="col-sm-5 form-box"> 
+							<div class="form-top">
+                        		<div class="form-top-left">
+                        			<h3>Admin Registration</h3>
+                            		<p>Fill in the form below to get admin access:</p>
+                        		</div>
+                        		<!--<div class="form-top-right">
+                        			<i class="fa fa-pencil"></i>
+                        		</div>-->
+                            </div>
+
+                            <div class="form-bottom">
+			                    <form role="form" action="{{ url_for('admin.register') }}" method="post" class="registration-form">
+			                    {{ form.hidden_tag() }}
+			                    {% for field in form %}
+			                    	<div class="form-group">
+			                    		<label class="sr-only" > {{ field.label }}</label>
+			                        	{{ field(class_="form-first-name form-control" ) }}
+
+			                        <!--	<input type="text" name="form-first-name" placeholder="First name..." class="form-first-name form-control" id="form-first-name">-->
+			                        </div>
+			                       {% endfor %}
+			                        <button type="submit" class="btn">Register/ഫോൺ നമ്പർ
+			                        </button>
+			                    </form>
+		                    </div>
+</div>
+</div>
+</div>
+		                 {% endblock %}

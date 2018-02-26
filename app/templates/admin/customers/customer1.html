@@ -1,0 +1,107 @@
+{% import "bootstrap/utils.html" as utils %}
+{% extends "reg_base1.html" %}
+{% block title %}Customers{% endblock %}
+{% block body %}
+
+ <!-- <div class="outer">
+    <div class="middle">
+      <div class="inner"> -->
+    
+        {{ utils.flashed_messages() }}
+        <br/>
+        <h1 style="text-align:center; color:white;"><strong>Customer</strong> Queue List</h1>
+        <br/>
+     <!--   <input type="button" value="Approve"  onclick="window.location='/customers/push/hello';"> -->
+     
+   
+
+        {% if customers %}
+          <hr class="intro-divider">          
+          <div id="demo"> 
+  <!-- Responsive table starts here -->
+  <!-- For correct display on small screens you must add 'data-title' to each 'td' in your table -->
+  <div class="table-responsive-vertical shadow-z-1">
+  <!-- Table starts here -->
+  <table id="table" class="table table-hover table-mc-light-blue">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Phone</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for customer in customers %}
+
+        <tr>
+          <td data-title="ID">
+            {{ customer.id }}
+          </td>
+          <td data-title="Name">
+            {{ customer.name }}
+          </td>
+          <td data-title="Age">
+             {{ customer.age }}
+          </td>
+          <td data-title="Phone">
+             {{ customer.phone_no }}
+          </td>
+          <td data-title="Date">
+             {{ customer.t_date }}
+          </td>
+           {% if customer.is_done %}
+                    <td style="background-color: grey; color: white;" data-title="Status" >
+                        <strong>Completed</strong>
+                    </td>
+                {% elif customer.is_current  %}
+                    <td style="background-color: #aec251; color: white;" data-title="Status" >
+                        <strong>Current</strong>
+                    </td>
+                {% else %}
+                  <td style="background-color: orange; color: white;" data-title="Status">
+                    <strong>Waiting</strong>
+                  </td>
+                {% endif %}
+            <td>
+              <a href="{{ url_for('admin.pushqueue', a =  customer.id )}}"> Push </a>
+            </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+   {% else %}
+          <div style="text-align: center">
+            <h3> No customers have been added. </h3>
+            <hr class="intro-divider">
+            </div>
+        {% endif %}
+           
+           
+        
+<!--Buttons -->
+
+        <a href="{{ url_for('admin.next_customer') }}" class="btn btn-link-1">
+            <i class="fa "></i>
+            Next Customer
+          </a>
+
+          <a href="{{ url_for('admin.reset_customer') }}" class="btn btn-link-1">
+            <i class="fa"></i>
+            Queue Reset
+          </a>
+
+          <a href="{{ url_for('admin.list_customers') }}" class="btn btn-link-1">
+            <i class="fa "></i>
+            Refresh
+          </a>
+
+      <!-- Buttons end -->
+      
+  
+
+{% endblock %}

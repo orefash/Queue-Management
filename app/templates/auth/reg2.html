@@ -1,0 +1,48 @@
+   {% import "bootstrap/utils.html" as utils %}
+     {% extends "reg_home.html" %}
+{% block title %}Register{% endblock %}
+{% block body %}                     
+<div class="inner-bg">
+                <div class="container">                  
+ <div class="row">  
+
+							<div class="col-sm-7 text">
+                            
+                        </div>
+                        <div class="col-sm-5 form-box"> 
+							<div class="form-top">
+                        		<div class="form-top-left">
+                        			{{ utils.flashed_messages() }}
+                        			<h3>Token Registration</h3>
+                            		<p>Fill in the form below to get your token</p>
+                            		
+                        		</div>
+                        		
+                            </div>
+
+                            <div class="form-bottom">
+			                    <form role="form" action="{{ url_for('auth.register') }}" method="post" class="registration-form">
+			                    {{ form.hidden_tag() }}
+			                   
+			                    	<div class="form-group">
+			                    		<label class="sr-only" >{{ form.name.label }}
+                                        </label>
+                                        
+			                        	{{ form.name(class_="form-first-name form-control", placeholder="Name/ പേര്" ) }}
+			                        </div>
+
+                                    <div class="form-group">
+                                        <label class="sr-only" > {{ form.age.label }}</label>
+                                        {{ form.age(class_="form-first-name form-control", placeholder="Age/ പ്രായം" ) }}
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="sr-only" > {{ form.phone_no.label }}</label>
+                                        {{ form.phone_no(class_="form-first-name form-control", placeholder="Phone/ ഫോൺനമ്പർ"  ) }}
+                                    </div>
+			                      
+			                        <button type="submit" class=" btn">Register</button>
+			                    </form>
+		                    </div>
+</div></div></div>
+		                 {% endblock %}

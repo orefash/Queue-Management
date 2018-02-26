@@ -1,0 +1,126 @@
+    {% import "bootstrap/utils.html" as utils %}
+     {% extends "reg_base1.html" %}
+{% block title %}Admin{% endblock %}
+{% block body %}
+<div class="intro-header">
+<div class="container">                    
+ <div class="row"> 
+ <div class="intro-message" >
+        
+     <hr class="intro-divider">
+     </ul>
+ </div>
+
+
+<div class="col-md-3 col-sm-6 info-card">
+<div class=" border">
+<span class="top">
+<i class="fa fa-user"></i>
+<strong>Total Customers Today</strong></span>
+<p class="info-txt">3000</p>
+</div>
+</div>
+
+
+<div class="col-md-3 col-sm-6 info-card">
+<div class=" border">
+<span class="top">
+<i class="fa fa-user"></i>
+<strong>Total Customers Today</strong></span>
+<p class="info-txt">3000</p>
+</div>
+</div>
+
+
+<div class="col-md-3 col-sm-6 info-card">
+	<div class=" border">
+<span class="top">
+<i class="fa fa-user"></i>
+<strong>Total Customers Today</strong></span>
+<p class="info-txt">3000</p>
+</div>
+</div>
+
+<div class="col-md-3 col-sm-6 info-card">
+
+<span class="top">
+<i class="fa fa-user"></i>
+<strong>Total Customers Today</strong></span>
+<p class="info-txt">3000</p>
+
+</div>
+
+ </div>
+ <!-- info row end -->
+<!-- calendar -->
+<div class="row">
+
+		<div class="dashboard_graph">
+			
+			<div class="row x_title">
+				<div class="col-md-6">
+					<h3><strong>Customer Activity</strong></h3>
+				</div>
+				<div class="col-md-6">
+					<a href="{{ url_for('admin.trial') }}" class="btn btn-link-1">
+					  <i class="fa"></i>
+					  Test
+					</a>
+					<a href="{{ url_for('admin.daytrial') }}" class="btn btn-link-1">
+					  <i class="fa"></i>
+					 Day
+					</a>
+				</div>
+			</div>
+			<div class="m_graph">
+				<div class="col-md-6">
+					<canvas id="chart" width="600" height="400"></canvas>
+				</div>
+			</div>
+
+
+		</div>
+
+</div>
+
+
+</div>
+
+<script>
+   // bar chart data
+   var barData = {
+   labels : [{% for item in labels %}
+                  "{{item}}",
+              {% endfor %}],
+   datasets : [
+      {
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+         data : [{% for item in values %}
+                      {{item}},
+                    {% endfor %}]
+      }
+      ]
+   }
+ 
+   // get bar chart canvas
+   var mychart = document.getElementById("chart").getContext("2d");
+ 
+   steps = 10
+   max = 10
+   // draw bar chart
+   new Chart(mychart).Bar(barData, {
+        scaleOverride: true,
+        scaleSteps: steps,
+        scaleStepWidth: Math.ceil(max / steps),
+        scaleStartValue: 0,
+        scaleShowVerticalLines: true,
+        scaleShowGridLines : true,
+        barShowStroke : true,
+        scaleShowLabels: true
+   });
+ 
+</script>
+
+{% endblock %}

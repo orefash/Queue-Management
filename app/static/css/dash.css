@@ -1,0 +1,48 @@
+.info-card {
+	padding: 10px 0px 15px 0px;
+	background-color:  #eee;
+	
+	/*-moz-border-radius: 4px 4px 4px 4px; -webkit-border-radius: 4px 4px 4px 4px; border-radius: 4px 4px 4px 4px;*/
+	text-align: left;
+	color: grey;
+}
+
+
+
+.info-card p{
+	margin: 0;
+padding: 0;
+}
+
+.border {
+	border-right:  2px solid grey;
+}
+
+.top {
+	font-size: 13px;
+}
+
+
+
+.info-txt {
+	font-size: 30px;
+line-height: 47px;
+font-weight: 600;
+
+}
+.cont-bg {
+	background: white;
+}
+
+.dashboard_graph, .m_graph {
+	background: #fff;
+	
+}
+.x_title {
+	padding: 10px 15px;
+	text-align: left;	
+}
+
+.m_graph {
+
+}
